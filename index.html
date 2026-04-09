@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Miranda+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        * {
+            padding: 0px;
+            margin: 0px;
+            
+        }
+
+        body {
+            font-family: "Miranda Sans", sans-serif;
+        }
+
+        header {
+            background-color: blue;
+            color: white;
+            padding-bottom: 50px;
+            box-shadow: 0px 0px 10px black;
+        }
+
+        h1 {
+            font-family: "Playfair Display", sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            background-color: blue;
+            color: white;
+            border-radius: 10px 10px 10px 10px ;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.592);
+            
+        }
+
+        nav {
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        input[type="search"] {
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 20px;
+            
+        }
+
+        button {
+            background-color: rgb(101, 101, 248);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        div.container {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around; 
+        }
+
+        div.itens {
+         height: 200px;
+         width: 370px; 
+         text-align: center;
+         padding: 40px;
+        
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.593);
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <h1>Catálogo Fotográfico <br> Setor O Ceilándia</h1>
+        <nav>
+            <input type="search" name="buscar" id="search" placeholder="Pesquisar">
+            <button type="submit">Buscar</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="itens">
+            <img src="imagens/bonnapan.png" alt="bonnapan">
+            <h2>Padaria bonnapan</h2>
+        </div>
+        <div class="itens">
+            <img src="imagens/farmacia.png" alt="farmacia">
+            <h2>Farmácia Drogasil</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="itens">
+            <img src="imagens/igreja-bj.png" alt="igreja-bj">
+            <h2>Parórquia Bom Jesus</h2>
+        </div>
+        <div class="itens">
+            <img src="imagens/kaizen.png" alt="kaizen">
+            <h2>Auto Peças Kaizen</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="itens">
+            <img src="imagens/pastel-dg.png" alt="pastel-dg">
+            <h2>Pastelaria do Galo</h2>
+        </div>
+
+        <div class="itens">
+            <img src="imagens/veneza.png" alt="veneza">
+            <h2>Mercado Veneza</h2>
+        </div>
+
+        
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('search');
+        
+        searchInput.addEventListener('input', (event) =>{
+            const value = formatString(event.target.value)
+
+            const item = document.querySelectorAll('.container .itens')
+            
+            item.forEach(item => {
+                if(formatString(item.textContent).indexOf(value) !== -1){
+                    item.style.display = 'block'
+                } else {
+                    item.style.display = 'none'
+                }
+                
+            })
+        });
+
+        function formatString(value) {
+            return value.toLowerCase().trim();
+        }
+    </script>
+
+</body>
+</html>
